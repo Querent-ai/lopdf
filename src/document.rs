@@ -5,7 +5,6 @@ use crate::xobject::PdfImage;
 use crate::xref::{Xref, XrefType};
 use crate::{Error, Result, Stream};
 use encoding_rs::UTF_16BE;
-use log::info;
 use std::cmp::max;
 use std::collections::{BTreeMap, HashMap};
 use std::io::Write;
@@ -568,7 +567,6 @@ impl Document {
 
     pub fn decode_text(encoding: Option<&str>, bytes: &[u8]) -> String {
         if let Some(encoding) = encoding {
-            info!("{}", encoding);
             match encoding {
                 "StandardEncoding" => bytes_to_string(encodings::STANDARD_ENCODING, bytes),
                 "MacRomanEncoding" => bytes_to_string(encodings::MAC_ROMAN_ENCODING, bytes),
